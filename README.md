@@ -23,7 +23,7 @@ To add the Funnel3D custom item extension to the Web Dashboard, follow the steps
 ```javascript
 function onBeforeRender(sender) {
   var dashboardControl = sender.getDesigner();
-  dashboardControl.registerExtension(CustomItems.funnelD3ItemExtension(dashboardControl));
+  dashboardControl.registerExtension(funnelD3ItemExtension(dashboardControl));
 }
 ```
 
