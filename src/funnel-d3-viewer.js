@@ -21,7 +21,7 @@ var funnelD3Item = (function(_base) {
 
     funnelD3Item.prototype.setSize = function(width, height) {
         _base.prototype.setSize.call(this, width, height);
-        this._update({ options: { chart: { width: this.contentWidth(), height: this.contentHeight() } } });
+        this._update(null, { chart: { width: this.contentWidth(), height: this.contentHeight() } });
     };
     funnelD3Item.prototype.renderContent = function($element, changeExisting) {
         var data = this._getDataSource();
@@ -34,7 +34,7 @@ var funnelD3Item = (function(_base) {
                 $element.append($('<div/>').attr('id', funnelId));
                 this.funnelViewer = new D3Funnel('#' + funnelId);
             }
-            this._update({ data: data }, false);
+            this._update(data);
         } else {
             $element.empty();
             this.funnelViewer = null;
@@ -42,7 +42,7 @@ var funnelD3Item = (function(_base) {
     };
     funnelD3Item.prototype.clearSelection = function() {
         _base.prototype.clearSelection.call(this);
-        this._update({ data: this._getDataSource() }, false);
+        this._update(this._getDataSource());
     };
     funnelD3Item.prototype.allowExportSingleItem = function() {
         return true;
@@ -139,16 +139,19 @@ var funnelD3Item = (function(_base) {
     };
     funnelD3Item.prototype._subscribeProperties = function() {
         var _this = this;
-        this.subscribeProperty('IsCurved', function(isCurved) { return _this._update({ options: { chart: { curve: { enabled: isCurved } } } }); });
-        this.subscribeProperty('IsDynamicHeight', function(isDynamicHeight) { return _this._update({ options: { block: { dynamicHeight: isDynamicHeight } } }); });
-        this.subscribeProperty('PinchCount', function(count) { return _this._update({ options: { chart: { bottomPinch: count } } }); });
-        this.subscribeProperty('FillType', function(type) { return _this._update({ options: { block: { fill: { type: type.toLowerCase() } } } }); });
+        this.subscribeProperty('IsCurved', function(isCurved) { return _this._update(null, { chart: { curve: { enabled: isCurved } } }); });
+        this.subscribeProperty('IsDynamicHeight', function(isDynamicHeight) { return _this._update(null, { block: { dynamicHeight: isDynamicHeight } }); });
+        this.subscribeProperty('PinchCount', function(count) { return _this._update(null, { chart: { bottomPinch: count } }); });
+        this.subscribeProperty('FillType', function(type) { return _this._update(null, { block: { fill: { type: type.toLowerCase() } } }); });
     };
-    funnelD3Item.prototype._update = function(options, deep) {
-        if(!options) { options = {}; }
-        if(!deep) { deep = true; }
+    funnelD3Item.prototype._update = function(data, options) {
         this._ensureFunnelSettings();
-        deep ? $.extend(true, this.funnelSettings, options) : $.extend(this.funnelSettings, options);
+        if(!!data) {
+            this.funnelSettings.data = data;
+        }
+        if(!!options) {
+            $.extend(true, this.funnelSettings.options, options);
+        }
         if(!!this.funnelViewer) {
             this.funnelViewer.draw(this.funnelSettings.data, this.funnelSettings.options);
         }
