@@ -1,0 +1,17 @@
+{
+  "name": "dashboard-extension-funnel-d3-item",
+  "version": "1.0.0",
+  "description": "The **FunnelD3** custom item allows you to render funnel chart using the [D3Funnel](https://github.com/jakezatecky/d3-funnel/blob/master/README.md) JS library.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevExpress/dashboard-extension-funnel-d3-item.git"
+  },
+  "author": "Developer Express Inc.",
+  "homepage": "https://github.com/DevExpress/dashboard-extension-funnel-d3-item#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp-rename": "^1.2.2"
+  }
+}
