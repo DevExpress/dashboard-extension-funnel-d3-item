@@ -5,6 +5,7 @@
         propertyName: 'Values',
         dataItemType: 'Measure',
         array: true,
+        coloringEnabled: true,
         displayName: 'DashboardWebCustomItemStringId.Values',
         placeholder: 'DashboardWebCustomItemStringId.SetValue',
         configurePlaceholder: 'DashboardWebCustomItemStringId.ConfigureValue'

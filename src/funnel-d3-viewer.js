@@ -63,10 +63,10 @@ var funnelD3Item = (function(_base) {
             var values = dataRow.getValue('Values');
             var valueStr = dataRow.getDisplayText('Values');
             if(_this._hasArguments()) {
-                var labelText = dataRow.getDisplayText('Arguments').join(' - ') + ': ' + valueStr, color = dataRow.getColor('Arguments');
+                var labelText = dataRow.getDisplayText('Arguments').join(' - ') + ': ' + valueStr, color = dataRow.getColor('Values', 0); //0 - 'layer' index
                 data.push([{ data: dataRow, text: labelText, color: color }].concat(values));
             } else {
-                data = values.map(function(value, index) { return [{ text: bindingValues[index].displayName() + ': ' + valueStr[index], color: '#5F8195' }, value]; });
+                data = values.map(function (value, index) { return [{ text: bindingValues[index].displayName() + ': ' + valueStr[index], color: dataRow.getColor('Values', index) }, value]; });
             }
         });
         return data.length > 0 ? data : undefined;
