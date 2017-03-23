@@ -54,8 +54,6 @@
         drillDown: true
     },
     icon: FUNNEL_D3_EXTENSION_NAME,
-    groupName: "custom",
-    groupTitle: 'DashboardWebCustomItemStringId.ToolBoxCustomItemCaption',
     title: 'DashboardWebCustomItemStringId.DefaultNameFunnelD3',
     index: 3
 };

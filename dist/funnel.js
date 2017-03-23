@@ -1,7 +1,6 @@
 DevExpress.JS.Localization.addCultureInfo({ 
     messages: {
         // Binding Panel
-        'DashboardWebCustomItemStringId.ToolBoxCustomItemCaption': "Custom Items",
         'DashboardWebCustomItemStringId.DefaultNameFunnelD3': "Funnel D3",
         'DashboardWebCustomItemStringId.Values': "Values",
         'DashboardWebCustomItemStringId.SetValue': "Set Value",
@@ -78,8 +77,6 @@ DevExpress.JS.Localization.addCultureInfo({
         drillDown: true
     },
     icon: FUNNEL_D3_EXTENSION_NAME,
-    groupName: "custom",
-    groupTitle: 'DashboardWebCustomItemStringId.ToolBoxCustomItemCaption',
     title: 'DashboardWebCustomItemStringId.DefaultNameFunnelD3',
     index: 3
 };

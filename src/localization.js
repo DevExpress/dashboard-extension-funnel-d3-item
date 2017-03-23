@@ -1,7 +1,6 @@
 DevExpress.JS.Localization.addCultureInfo({ 
     messages: {
         // Binding Panel
-        'DashboardWebCustomItemStringId.ToolBoxCustomItemCaption': "Custom Items",
         'DashboardWebCustomItemStringId.DefaultNameFunnelD3': "Funnel D3",
         'DashboardWebCustomItemStringId.Values': "Values",
         'DashboardWebCustomItemStringId.SetValue': "Set Value",
