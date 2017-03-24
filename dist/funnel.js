@@ -1,4 +1,4 @@
-DevExpress.JS.Localization.addCultureInfo({ 
+DevExpress.Localization.addCultureInfo({ 
     messages: {
         // Binding Panel
         'DashboardWebCustomItemStringId.DefaultNameFunnelD3': "Funnel D3",
@@ -28,23 +28,23 @@ DevExpress.JS.Localization.addCultureInfo({
         propertyName: 'Values',
         dataItemType: 'Measure',
         array: true,
-        coloringEnabled: true,
+        enableColoring: true,
         displayName: 'DashboardWebCustomItemStringId.Values',
-        placeholder: 'DashboardWebCustomItemStringId.SetValue',
-        configurePlaceholder: 'DashboardWebCustomItemStringId.ConfigureValue'
+        emptyPlaceholder: 'DashboardWebCustomItemStringId.SetValue',
+        selectedPlaceholder: 'DashboardWebCustomItemStringId.ConfigureValue'
     }, {
         propertyName: 'Arguments',
         dataItemType: 'Dimension',
         array: true,
-        interactivityEnabled: true,
-        coloringEnabled: true,
+        enableInteractivity: true,
+        enableColoring: true,
         displayName: 'DashboardWebCustomItemStringId.Arguments',
-        placeholder: 'DashboardWebCustomItemStringId.SetArgument',
-        configurePlaceholder: 'DashboardWebCustomItemStringId.ConfigureArgument'
+        emptyPlaceholder: 'DashboardWebCustomItemStringId.SetArgument',
+        selectedPlaceholder: 'DashboardWebCustomItemStringId.ConfigureArgument'
     }],
     properties: [{
         propertyName: 'FillType',
-        editor: DevExpress.JS.Dashboard.Metadata.editorTemplates.buttonGroup,
+        editor: DevExpress.Dashboard.Metadata.editorTemplates.buttonGroup,
         displayName: "DashboardWebCustomItemStringId.FillType",
         sectionName: 'DashboardWebCustomItemStringId.SectionName',
         values: {
@@ -54,19 +54,19 @@ DevExpress.JS.Localization.addCultureInfo({
         defaultVal: 'Solid'
     }, {
         propertyName: 'IsCurved',
-        editor: DevExpress.JS.Dashboard.Metadata.editorTemplates.boolYesNo,
+        editor: DevExpress.Dashboard.Metadata.editorTemplates.boolYesNo,
         displayName: 'DashboardWebCustomItemStringId.IsCurved',
         sectionName: 'DashboardWebCustomItemStringId.SectionName',
         defaultVal: false
     }, {
         propertyName: 'IsDynamicHeight',
-        editor: DevExpress.JS.Dashboard.Metadata.editorTemplates.boolYesNo,
+        editor: DevExpress.Dashboard.Metadata.editorTemplates.boolYesNo,
         displayName: 'DashboardWebCustomItemStringId.IsDynamicHeight',
         sectionName: 'DashboardWebCustomItemStringId.SectionName',
         defaultVal: true
     }, {
         propertyName: 'PinchCount',
-        editor: DevExpress.JS.Dashboard.Metadata.editorTemplates.numeric,
+        editor: DevExpress.Dashboard.Metadata.editorTemplates.numeric,
         editorOptions: { min: 0 },
         displayName: 'DashboardWebCustomItemStringId.PinchCount',
         sectionName: 'DashboardWebCustomItemStringId.SectionName',
@@ -253,7 +253,7 @@ var funnelD3Item = (function(_base) {
         return canvas['toDataURL']().replace('data:image/png;base64,', '');
     };
     return funnelD3Item;
-} (DevExpress.JS.Dashboard.customViewerItem));
+} (DevExpress.Dashboard.customViewerItem));
 var funnelD3ItemExtension = function(dashboardControl) {
     dashboardControl.registerIcon(FUNNEL_D3_ICON);
 

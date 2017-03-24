@@ -169,4 +169,4 @@ var funnelD3Item = (function(_base) {
         return canvas['toDataURL']().replace('data:image/png;base64,', '');
     };
     return funnelD3Item;
-} (DevExpress.JS.Dashboard.customViewerItem));
+} (DevExpress.Dashboard.customViewerItem));
