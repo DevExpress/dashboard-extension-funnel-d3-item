@@ -6,10 +6,6 @@ var funnelD3Item = (function(_base) {
     // Overriden Methods
     __extends(funnelD3Item, _base);
 
-    // Constructor:
-    // * item: CustomItem instance
-    // * $container: CustomItem viewer container
-    // * options: CustomItem viewer base item internal options
     function funnelD3Item(model, $container, options) {
         _base.call(this, model, $container, options);
 
@@ -19,10 +15,6 @@ var funnelD3Item = (function(_base) {
         this._subscribeProperties();
     }
 
-    funnelD3Item.prototype.setSize = function(width, height) {
-        _base.prototype.setSize.call(this, width, height);
-        this._update(null, { chart: { width: this.contentWidth(), height: this.contentHeight() } });
-    };
     funnelD3Item.prototype.renderContent = function($element, changeExisting) {
         var data = this._getDataSource();
         var funnelId = this._getFunnelId();
@@ -39,6 +31,10 @@ var funnelD3Item = (function(_base) {
             $element.empty();
             this.funnelViewer = null;
         }
+    };
+    funnelD3Item.prototype.setSize = function (width, height) {
+        _base.prototype.setSize.call(this, width, height);
+        this._update(null, { chart: { width: this.contentWidth(), height: this.contentHeight() } });
     };
     funnelD3Item.prototype.clearSelection = function() {
         _base.prototype.clearSelection.call(this);
