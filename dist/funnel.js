@@ -143,7 +143,7 @@ var funnelD3Item = (function(_base) {
         if(bindingValues.length == 0)
             return undefined;
         var data = [];
-        this.model.iterateData(function(dataRow) {
+        this.iterateData(function(dataRow) {
             var values = dataRow.getValue('Values');
             var valueStr = dataRow.getDisplayText('Values');
             if(_this._hasArguments()) {
@@ -210,7 +210,7 @@ var funnelD3Item = (function(_base) {
         return this.funnelSettings;
     };
     funnelD3Item.prototype._getFunnelId = function() {
-        return 'dx-d3-funnel-' + this.model.componentName();
+        return 'dx-d3-funnel-' + this.getName();
     };
     funnelD3Item.prototype._onClick = function(e) {
         if(!this._hasArguments() || !e.label)
@@ -262,10 +262,8 @@ var funnelD3ItemExtension = function(dashboardControl) {
     return {
         name: FUNNEL_D3_EXTENSION_NAME,
         metaData: funnelMeta,
-        createViewerItem: function(model, $element, content, args) {
-            if(model.customItemType() === FUNNEL_D3_EXTENSION_NAME) {
-                args.viewerItem = new funnelD3Item(model, $element, content);
-            }
+        createViewerItem: function (model, $element, content) {
+            return new funnelD3Item(model, $element, content);
         }
     }
 }
