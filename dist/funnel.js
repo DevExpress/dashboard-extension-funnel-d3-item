@@ -204,7 +204,7 @@ var funnelD3Item = (function(_base) {
                 }
             };
         }
-        this.funnelSettings.options.block.highlight = this.model.isMasterFilter() || this.model.isDrillDownEnabled();
+        this.funnelSettings.options.block.highlight = this.allowDrillDown() || this.allowSetMasterFilter();
         return this.funnelSettings;
     };
     funnelD3Item.prototype._getFunnelId = function() {
@@ -214,13 +214,12 @@ var funnelD3Item = (function(_base) {
         if(!this._hasArguments() || !e.label)
             return;
         var row = e.label.raw.data;
-        if(this.model.allowDrillDown(row))
+        if (this.allowDrillDown(row))
             this.drillDown(row);
-        else if(this.model.allowSetMasterFilter()) {
+        else if (this.allowSetMasterFilter(row)) {
             this.setMasterFilter(row);
             this._update();
         }
-            
     };
     funnelD3Item.prototype._subscribeProperties = function() {
         var _this = this;
