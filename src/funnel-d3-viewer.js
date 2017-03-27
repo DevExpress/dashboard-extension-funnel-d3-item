@@ -130,12 +130,13 @@ var funnelD3Item = (function(_base) {
         if(!this._hasArguments() || !e.label)
             return;
         var row = e.label.raw.data;
-        if(this.model.isMasterFilter() && !this.isSelected(row)) {
+        if(this.model.allowDrillDown(row))
+            this.drillDown(row);
+        else if(this.model.allowSetMasterFilter()) {
             this.setMasterFilter(row);
             this._update();
         }
-        else if(this.model.isDrillDownEnabled())
-            this.drillDown(row);
+            
     };
     funnelD3Item.prototype._subscribeProperties = function() {
         var _this = this;
