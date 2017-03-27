@@ -141,10 +141,10 @@ var funnelD3Item = (function(_base) {
     };
     funnelD3Item.prototype._subscribeProperties = function() {
         var _this = this;
-        this.subscribeProperty('IsCurved', function(isCurved) { return _this._update(null, { chart: { curve: { enabled: isCurved } } }); });
-        this.subscribeProperty('IsDynamicHeight', function(isDynamicHeight) { return _this._update(null, { block: { dynamicHeight: isDynamicHeight } }); });
-        this.subscribeProperty('PinchCount', function(count) { return _this._update(null, { chart: { bottomPinch: count } }); });
-        this.subscribeProperty('FillType', function(type) { return _this._update(null, { block: { fill: { type: type.toLowerCase() } } }); });
+        this.subscribe('IsCurved', function(isCurved) { return _this._update(null, { chart: { curve: { enabled: isCurved } } }); });
+        this.subscribe('IsDynamicHeight', function(isDynamicHeight) { return _this._update(null, { block: { dynamicHeight: isDynamicHeight } }); });
+        this.subscribe('PinchCount', function(count) { return _this._update(null, { chart: { bottomPinch: count } }); });
+        this.subscribe('FillType', function(type) { return _this._update(null, { block: { fill: { type: type.toLowerCase() } } }); });
     };
     funnelD3Item.prototype._update = function(data, options) {
         this._ensureFunnelSettings();
