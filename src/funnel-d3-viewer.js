@@ -59,7 +59,7 @@ var funnelD3Item = (function(_base) {
         if(bindingValues.length == 0)
             return undefined;
         var data = [];
-        this.model.iterateData(function(dataRow) {
+        this.iterateData(function(dataRow) {
             var values = dataRow.getValue('Values');
             var valueStr = dataRow.getDisplayText('Values');
             if(_this._hasArguments()) {
@@ -124,7 +124,7 @@ var funnelD3Item = (function(_base) {
         return this.funnelSettings;
     };
     funnelD3Item.prototype._getFunnelId = function() {
-        return 'dx-d3-funnel-' + this.model.componentName();
+        return 'dx-d3-funnel-' + this.getName();
     };
     funnelD3Item.prototype._onClick = function(e) {
         if(!this._hasArguments() || !e.label)
