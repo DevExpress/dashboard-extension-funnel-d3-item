@@ -180,6 +180,8 @@ var funnelD3Item = (function(_base) {
                 data: undefined,
                 options: {
                     chart: {
+                        width: this.contentWidth(),
+                        height: this.contentHeight(),
                         bottomPinch: this.getPropertyValue('PinchCount'),
                         curve: { enabled: this.getPropertyValue('IsCurved') }
                     },
