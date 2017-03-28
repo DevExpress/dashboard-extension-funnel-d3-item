@@ -118,7 +118,7 @@ var funnelD3Item = (function(_base) {
                 }
             };
         }
-        this.funnelSettings.options.block.highlight = this.allowDrillDown() || this.allowSetMasterFilter();
+        this.funnelSettings.options.block.highlight = this.allowDrillDown() || this.allowMasterFilter();
         return this.funnelSettings;
     };
     funnelD3Item.prototype._getFunnelId = function() {
@@ -130,7 +130,7 @@ var funnelD3Item = (function(_base) {
         var row = e.label.raw.data;
         if (this.allowDrillDown(row))
             this.drillDown(row);
-        else if (this.allowSetMasterFilter(row)) {
+        else if (this.allowMasterFilter(row)) {
             this.setMasterFilter(row);
             this._update();
         }

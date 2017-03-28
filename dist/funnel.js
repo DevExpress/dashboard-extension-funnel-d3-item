@@ -90,10 +90,6 @@ var funnelD3Item = (function(_base) {
     // Overriden Methods
     __extends(funnelD3Item, _base);
 
-    // Constructor:
-    // * item: CustomItem instance
-    // * $container: CustomItem viewer container
-    // * options: CustomItem viewer base item internal options
     function funnelD3Item(model, $container, options) {
         _base.call(this, model, $container, options);
 
@@ -103,10 +99,6 @@ var funnelD3Item = (function(_base) {
         this._subscribeProperties();
     }
 
-    funnelD3Item.prototype.setSize = function(width, height) {
-        _base.prototype.setSize.call(this, width, height);
-        this._update(null, { chart: { width: this.contentWidth(), height: this.contentHeight() } });
-    };
     funnelD3Item.prototype.renderContent = function($element, changeExisting) {
         var data = this._getDataSource();
         var funnelId = this._getFunnelId();
@@ -123,6 +115,10 @@ var funnelD3Item = (function(_base) {
             $element.empty();
             this.funnelViewer = null;
         }
+    };
+    funnelD3Item.prototype.setSize = function (width, height) {
+        _base.prototype.setSize.call(this, width, height);
+        this._update(null, { chart: { width: this.contentWidth(), height: this.contentHeight() } });
     };
     funnelD3Item.prototype.clearSelection = function() {
         _base.prototype.clearSelection.call(this);
@@ -206,7 +202,7 @@ var funnelD3Item = (function(_base) {
                 }
             };
         }
-        this.funnelSettings.options.block.highlight = this.allowDrillDown() || this.allowSetMasterFilter();
+        this.funnelSettings.options.block.highlight = this.allowDrillDown() || this.allowMasterFilter();
         return this.funnelSettings;
     };
     funnelD3Item.prototype._getFunnelId = function() {
@@ -218,7 +214,7 @@ var funnelD3Item = (function(_base) {
         var row = e.label.raw.data;
         if (this.allowDrillDown(row))
             this.drillDown(row);
-        else if (this.allowSetMasterFilter(row)) {
+        else if (this.allowMasterFilter(row)) {
             this.setMasterFilter(row);
             this._update();
         }
