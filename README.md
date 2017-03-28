@@ -34,3 +34,15 @@ The **FunnelD3** dashboard item supports the following settings that you can con
 * **Curved** - Specifies whether the funnel is curved.
 * **Dynamic Height** - Specifies whether the height of blocks are proportional to their weight.
 * **Pinch Count** - Specifies how many blocks to pinch at the bottom to create a funnel "neck".
+
+## License
+
+Familiarize yourself with the [.NET Controls & Frameworks Commercial License](https://www.devexpress.com/Support/EULAs/NetComponents.xml). [Free trial is available](https://go.devexpress.com/DevExpressDownload_UniversalTrial.aspx)!
+
+**The FunnelD3 custom dashboard extension is released as a MIT-licensed (free and open-source) add-on to the Web Dashboard.**
+
+## Support & Feedback
+
+* Follow [this guideline](https://isc.devexpress.com/Thread/WorkplaceDetails/T491859) for general information about a custom extension.
+* To learn how to create a custom item, see the following [KB article](https://isc.devexpress.com/Thread/WorkplaceDetails/T491984).
+* To address questions regarding the Web Dashboard and JavaScript API, use [DevExpress Support Center](https://www.devexpress.com/Support/Center).
