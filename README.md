@@ -1,5 +1,7 @@
 A custom **FunnelD3** item allows you to render a funnel chart using the [D3Funnel](https://github.com/jakezatecky/d3-funnel/blob/master/README.md) JS library.
 
+![image](https://cloud.githubusercontent.com/assets/17986517/25003741/907a39e0-2059-11e7-8540-312534ec2bad.png)
+
 This dashboard item supports the following capabilities:
 
 - [Master-Filtering](https://documentation.devexpress.com/#Dashboard/CustomDocument117060)
