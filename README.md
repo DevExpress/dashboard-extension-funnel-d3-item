@@ -1,7 +1,5 @@
 A custom **FunnelD3** item allows you to render a funnel chart using the [D3Funnel](https://github.com/jakezatecky/d3-funnel/blob/master/README.md) JS library.
 
-![image](https://cloud.githubusercontent.com/assets/17986517/25003741/907a39e0-2059-11e7-8540-312534ec2bad.png)
-
 This dashboard item supports the following capabilities:
 
 - [Master-Filtering](https://documentation.devexpress.com/#Dashboard/CustomDocument117060)
@@ -32,6 +30,9 @@ function onBeforeRender(sender) {
 
 ## Settings
 The **FunnelD3** dashboard item supports the following settings that you can configure in the Wed Dashboard UI:
+
+![image](https://cloud.githubusercontent.com/assets/17986517/25003741/907a39e0-2059-11e7-8540-312534ec2bad.png)
+
 * **Fill Type** - Specifies the funnel chart's *solid* or *gradient* fill type.
 * **Curved** - Specifies whether the funnel is curved.
 * **Dynamic Height** - Specifies whether the height of blocks are proportional to their weight.
