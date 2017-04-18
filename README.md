@@ -9,20 +9,34 @@ This dashboard item supports the following capabilities:
 
 ## Installation
 
-To add a custom Funnel3D item extension to the Web Dashboard, follow the steps below. 
+To add a custom Funnel3D item extension to the Web Dashboard, follow the steps below.
 
-1. Attach both the D3.js v4.x and D3Funnel scripts to the project. You can find these libraries here: [D3](https://github.com/d3/d3) and [D3Funnel](https://github.com/jakezatecky/d3-funnel).
+1. Download the required scripts [here](https://github.com/DevExpress/dashboard-extension-funnel-d3-item/releases) and place them in your project.
+
+2. Attach the download script to the project.
+```xml
+<script src="/your-path/dashboard-extension-funnel-d3-item/dist/funnel.min.js"></script>
+```
+
+3. Attach both the D3.js v4.x and D3Funnel scripts to the project. You can find these libraries here: [D3](https://github.com/d3/d3) and [D3Funnel](https://github.com/jakezatecky/d3-funnel).
 
 ```xml
 <script src="/path/to/d3.v4.js"></script>
 <script src="/path/to/dist/d3-funnel.js"></script>
 ```
 
-2. Register the custom item extension in the Web Dashboard's [BeforeRender](https://documentation.devexpress.com/#Dashboard/DevExpressDashboardWebScriptsASPxClientDashboard_BeforeRendertopic) event.
+4. Handle the Web Dashboard's [BeforeRender](https://documentation.devexpress.com/#Dashboard/DevExpressDashboardWebScriptsASPxClientDashboard_BeforeRendertopic) event to perform client-side customization of the Web Dashboard control before the control and its elements have been rendered.
+```xml
+<dx:ASPxDashboard ID="ASPxDashboard1" runat="server" DashboardStorageFolder="~/App_Data">
+  <ClientSideEvents BeforeRender="onBeforeRender" />
+</dx:ASPxDashboard>
+```
+
+5. Register the custom item extension to add the FunnelD3 to the Web Dashboard.
 
 ```javascript
 function onBeforeRender(sender) {
-  var dashboardControl = sender.getDesigner();
+  var dashboardControl = sender.GetDashboardControl();
   dashboardControl.registerExtension(funnelD3ItemExtension(dashboardControl));
 }
 ```
