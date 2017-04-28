@@ -58,11 +58,12 @@ var funnelD3Item = (function(_base) {
         this.iterateData(function(dataRow) {
             var values = dataRow.getValue('Values');
             var valueStr = dataRow.getDisplayText('Values');
+            var color = dataRow.getColor('Values');
             if(_this._hasArguments()) {
-                var labelText = dataRow.getDisplayText('Arguments').join(' - ') + ': ' + valueStr, color = dataRow.getColor('Values', 0); //0 - 'layer' index
-                data.push([{ data: dataRow, text: labelText, color: color }].concat(values));
+                var labelText = dataRow.getDisplayText('Arguments').join(' - ') + ': ' + valueStr; 
+                data.push([{ data: dataRow, text: labelText, color: color[0] }].concat(values));//0 - 'layer' index for color value
             } else {
-                data = values.map(function (value, index) { return [{ text: bindingValues[index].displayName() + ': ' + valueStr[index], color: dataRow.getColor('Values', index) }, value]; });
+                data = values.map(function(value, index) { return [{ text: bindingValues[index].displayName() + ': ' + valueStr[index], color: color[index] }, value]; });
             }
         });
         return data.length > 0 ? data : undefined;
