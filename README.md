@@ -1,4 +1,4 @@
-A custom **FunnelD3** item allows you to render a funnel chart using the [D3Funnel](https://github.com/jakezatecky/d3-funnel/blob/master/README.md) JS library.
+A custom **FunnelD3** item renders a funnel chart using the [D3Funnel](https://github.com/jakezatecky/d3-funnel/blob/master/README.md) JS library.
 
 This dashboard item supports the following capabilities:
 
