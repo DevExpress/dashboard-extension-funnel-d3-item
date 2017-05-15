@@ -43,7 +43,7 @@ function onBeforeRender(sender) {
 
 
 ## Settings
-The **FunnelD3** dashboard item supports the following settings that you can configure in the Wed Dashboard UI:
+The **FunnelD3** dashboard item supports the following settings that you can configure in the Web Dashboard UI:
 
 ![image](https://cloud.githubusercontent.com/assets/17986517/25003741/907a39e0-2059-11e7-8540-312534ec2bad.png)
 
