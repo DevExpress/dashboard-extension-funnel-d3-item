@@ -81,7 +81,7 @@ gulp build
 ```
 
 You can find the resulting files at ```...\dashboard-extension-funnel-d3-item\dist```:
-**funnel.js.js** and **funnel.js.min.js**.
+**funnel.js** and **funnel.min.js**.
 
 
 ## License
