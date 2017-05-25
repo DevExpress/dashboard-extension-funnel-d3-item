@@ -52,6 +52,38 @@ The **FunnelD3** dashboard item supports the following settings that you can con
 * **Dynamic Height** - Specifies whether the height of blocks are proportional to their weight.
 * **Pinch Count** - Specifies how many blocks to pinch at the bottom to create a funnel "neck".
 
+## Development 
+
+You can use this extension code as a base for your own [dashboard item extension](https://documentation.devexpress.com/#Dashboard/CustomDocument117546) development. 
+
+Before you start, we advise you to [fork](https://help.github.com/articles/fork-a-repo/) this repository and work with your own copy.
+
+1. Clone this extension to get a local copy of the repository.
+```Batchfile
+git clone https://github.com/DevExpress/dashboard-extension-funnel-d3-item.git
+cd dashboard-extension-online-map-item
+```
+
+2. In this extension we use the [Node.js](https://nodejs.org/en/about/) toolset. Use the command below to install all modules listed as dependencies in the extension's **package.json** file.
+```Batchfile
+npm install
+```
+
+3. Then install [Gulp](http://gulpjs.com) to build the solution. You can install it globally...
+```Batchfile
+npm install -g gulp
+gulp build
+```
+
+... or use a local Gulp version.
+```Batchfile
+./node_modules/.bin/gulp build
+```
+
+You can find the resulting files at ```...\dashboard-extension-funnel-d3-item\dist```:
+**funnel.js.js** and **funnel.js.min.js**.
+
+
 ## License
 
 This extension is distributed under the **MIT** license (free and open-source), but can only be used with a commercial DevExpress Dashboard software product. You can [review the license terms](https://www.devexpress.com/Support/EULAs/NetComponents.xml) or [download a free trial version](https://go.devexpress.com/DevExpressDownload_UniversalTrial.aspx) of the Dashboard suite at [DevExpress.com](https://www.devexpress.com).
