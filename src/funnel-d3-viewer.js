@@ -12,6 +12,7 @@ var funnelD3Item = (function(_base) {
         this.funnelSettings = undefined;
         this.funnelViewer = null;
         this.selectionValues = [];
+        this.exportingImage = new Image();
         this._subscribeProperties();
     }
 
@@ -43,10 +44,9 @@ var funnelD3Item = (function(_base) {
     funnelD3Item.prototype.allowExportSingleItem = function() {
         return true;
     };
-    funnelD3Item.prototype.getExportInfo = function() {
-        var svg = $('#' + this._getFunnelId()).children()[0];
+    funnelD3Item.prototype.getExportInfo = function () {
         return {
-            image: this._getImageBase64(svg, this.contentWidth(), this.contentHeight())
+            image: this._getImageBase64()
         };
     };
     funnelD3Item.prototype._getDataSource = function() {
@@ -153,18 +153,23 @@ var funnelD3Item = (function(_base) {
         }
         if(!!this.funnelViewer) {
             this.funnelViewer.draw(this.funnelSettings.data, this.funnelSettings.options);
+            this._updateExportingImage();
         }
+    };
+    funnelD3Item.prototype._updateExportingImage = function () {
+        var svg = $('#' + this._getFunnelId()).children()[0],
+            str = new XMLSerializer().serializeToString(svg),
+            encodedData = 'data:image/svg+xml;base64,' + window.btoa(str);
+        this.exportingImage.src = encodedData;
     };
     funnelD3Item.prototype._hasArguments = function() {
         return this.getBindingValue('Arguments').length > 0;
     };
-    funnelD3Item.prototype._getImageBase64 = function(svg, width, height) {
-        var canvas = $('<canvas>')[0], str = new XMLSerializer().serializeToString(svg), encodedData = 'data:image/svg+xml;base64,' + window.btoa(str);
-        var image = new Image();
-        image.src = encodedData;
-        canvas['width'] = width;
-        canvas['height'] = height;
-        canvas['getContext']('2d').drawImage(image, 0, 0);
+    funnelD3Item.prototype._getImageBase64 = function () {
+        var canvas = $('<canvas>')[0];
+        canvas['width'] = this.contentWidth();
+        canvas['height'] = this.contentHeight();
+        canvas['getContext']('2d').drawImage(this.exportingImage, 0, 0);
         return canvas['toDataURL']().replace('data:image/png;base64,', '');
     };
     return funnelD3Item;
