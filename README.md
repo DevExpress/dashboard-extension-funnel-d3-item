@@ -11,7 +11,7 @@ This dashboard item supports the following capabilities:
 
 To add a custom Funnel3D item extension to the Web Dashboard, follow the steps below.
 
-1. Download the required scripts [here](https://github.com/DevExpress/dashboard-extension-funnel-d3-item/releases) and place them in your project.
+1. Download the required version of scripts [here](https://github.com/DevExpress/dashboard-extension-funnel-d3-item/releases) and add the *dist* folder in your project.
 
 2. Attach the download script to the project.
 ```xml
