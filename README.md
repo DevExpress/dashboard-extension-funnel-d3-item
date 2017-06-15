@@ -11,11 +11,14 @@ This dashboard item supports the following capabilities:
 
 To add a custom Funnel3D item extension to the Web Dashboard, follow the steps below.
 
-1. Download the required version of scripts [here](https://github.com/DevExpress/dashboard-extension-funnel-d3-item/releases) and add the *dist* folder in your project.
+1. Download the latest version of scripts [here](https://github.com/DevExpress/dashboard-extension-funnel-d3-item/releases) and add the *dist* folder in your project.
 
 2. Attach the download script to the project.
 ```xml
-<script src="/your-path/dashboard-extension-funnel-d3-item/dist/funnel.min.js"></script>
+<head>
+    <script src="/your-path/dashboard-extension-funnel-d3-item/dist/funnel.min.js"></script>
+    <!-- ... -->
+</head>
 ```
 
 3. Attach both the D3.js v4.x and D3Funnel scripts to the project. You can find these libraries here: [D3](https://github.com/d3/d3) and [D3Funnel](https://github.com/jakezatecky/d3-funnel).
@@ -27,9 +30,17 @@ To add a custom Funnel3D item extension to the Web Dashboard, follow the steps b
 
 4. Handle the Web Dashboard's [BeforeRender](https://documentation.devexpress.com/#Dashboard/DevExpressDashboardWebScriptsASPxClientDashboard_BeforeRendertopic) event to perform client-side customization of the Web Dashboard control before the control and its elements have been rendered.
 ```xml
-<dx:ASPxDashboard ID="ASPxDashboard1" runat="server" DashboardStorageFolder="~/App_Data">
+<!-- For ASP.NET Web Forms -->
+<dx:ASPxDashboard ID="ASPxDashboard1" runat="server" DashboardStorageFolder="~/App_Data/Dashboards">
   <ClientSideEvents BeforeRender="onBeforeRender" />
 </dx:ASPxDashboard>
+```
+```C#
+@* For ASP.NET MVC *@
+@Html.DevExpress().Dashboard(settings => {
+    settings.Name = "Dashboard";
+    settings.ClientSideEvents.BeforeRender = "onBeforeRender";
+}).GetHtml()
 ```
 
 5. Register the custom item extension to add the FunnelD3 to the Web Dashboard.
