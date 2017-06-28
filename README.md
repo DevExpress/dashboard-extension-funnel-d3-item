@@ -11,24 +11,26 @@ This dashboard item supports the following capabilities:
 
 To add a custom Funnel3D item extension to the Web Dashboard, follow the steps below.
 
-1. Download the latest version of scripts [here](https://github.com/DevExpress/dashboard-extension-funnel-d3-item/releases) and add the *dist* folder in your project.
+1. Download the latest version of scripts [here](https://github.com/DevExpress/dashboard-extension-funnel-d3-item/releases).
 
-2. Attach the download script to the project.
+2. Add the *dist* folder in your project.
+
+3. Attach the download script to the project inside the `<head>` section onto the page containing Web Dashboard.
 ```xml
 <head>
-    <script src="/your-path/dashboard-extension-funnel-d3-item/dist/funnel.min.js"></script>
+    <script src="/dist/funnel.min.js"></script>
     <!-- ... -->
 </head>
 ```
 
-3. Attach both the D3.js v4.x and D3Funnel scripts to the project. You can find these libraries here: [D3](https://github.com/d3/d3) and [D3Funnel](https://github.com/jakezatecky/d3-funnel).
+4. Attach both the D3.js v4.x and D3Funnel scripts to the project. You can find these libraries here: [D3](https://github.com/d3/d3) and [D3Funnel](https://github.com/jakezatecky/d3-funnel).
 
 ```xml
 <script src="/path/to/d3.v4.js"></script>
 <script src="/path/to/dist/d3-funnel.js"></script>
 ```
 
-4. Handle the Web Dashboard's [BeforeRender](https://documentation.devexpress.com/#Dashboard/DevExpressDashboardWebScriptsASPxClientDashboard_BeforeRendertopic) event to perform client-side customization of the Web Dashboard control before the control and its elements have been rendered.
+5. Handle the Web Dashboard's [BeforeRender](https://documentation.devexpress.com/#Dashboard/DevExpressDashboardWebScriptsASPxClientDashboard_BeforeRendertopic) event to perform client-side customization of the Web Dashboard control before the control and its elements have been rendered.
 ```xml
 <!-- For ASP.NET Web Forms -->
 <dx:ASPxDashboard ID="ASPxDashboard1" runat="server" DashboardStorageFolder="~/App_Data/Dashboards">
@@ -43,7 +45,7 @@ To add a custom Funnel3D item extension to the Web Dashboard, follow the steps b
 }).GetHtml()
 ```
 
-5. Register the custom item extension to add the FunnelD3 to the Web Dashboard.
+6. Register the custom item extension to add the FunnelD3 to the Web Dashboard.
 
 ```javascript
 function onBeforeRender(sender) {
@@ -94,13 +96,12 @@ gulp build
 You can find the resulting files at ```...\dashboard-extension-funnel-d3-item\dist```:
 **funnel.js** and **funnel.min.js**.
 
-
 ## License
 
 This extension is distributed under the **MIT** license (free and open-source), but can only be used with a commercial DevExpress Dashboard software product. You can [review the license terms](https://www.devexpress.com/Support/EULAs/NetComponents.xml) or [download a free trial version](https://go.devexpress.com/DevExpressDownload_UniversalTrial.aspx) of the Dashboard suite at [DevExpress.com](https://www.devexpress.com).
 
 ## Support & Feedback
 
-* Follow [this guideline](https://www.devexpress.com/Support/Center/Question/Details/T491859) for general information about a custom extension.
+* Refer to [this section](https://documentation.devexpress.com/#Dashboard/CustomDocument117232) for general information about client-side extensions.
 * To learn how to create a custom item, see the following [KB article](https://www.devexpress.com/Support/Center/Question/Details/T491984).
 * To address questions regarding the Web Dashboard and JavaScript API, use [DevExpress Support Center](https://www.devexpress.com/Support/Center).
