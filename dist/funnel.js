@@ -57,13 +57,15 @@ DevExpress.Localization.addCultureInfo({
         editor: DevExpress.Dashboard.Metadata.editorTemplates.boolYesNo,
         displayName: 'DashboardWebCustomItemStringId.IsCurved',
         sectionName: 'DashboardWebCustomItemStringId.SectionName',
-        defaultVal: false
+        defaultVal: false,
+        from: DevExpress.Dashboard.Metadata.parseBool
     }, {
         propertyName: 'IsDynamicHeight',
         editor: DevExpress.Dashboard.Metadata.editorTemplates.boolYesNo,
         displayName: 'DashboardWebCustomItemStringId.IsDynamicHeight',
         sectionName: 'DashboardWebCustomItemStringId.SectionName',
-        defaultVal: true
+        defaultVal: true,
+        from: DevExpress.Dashboard.Metadata.parseBool
     }, {
         propertyName: 'PinchCount',
         editor: DevExpress.Dashboard.Metadata.editorTemplates.numeric,
