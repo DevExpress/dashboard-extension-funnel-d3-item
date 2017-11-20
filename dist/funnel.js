@@ -246,7 +246,7 @@ var funnelD3Item = (function(_base) {
     funnelD3Item.prototype._updateExportingImage = function () {
         var svg = $('#' + this._getFunnelId()).children()[0],
             str = new XMLSerializer().serializeToString(svg),
-            encodedData = 'data:image/svg+xml;base64,' + window.btoa(str);
+            encodedData = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(str)));
         this.exportingImage.src = encodedData;
     };
     funnelD3Item.prototype._hasArguments = function() {
