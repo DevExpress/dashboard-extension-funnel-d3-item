@@ -27,7 +27,7 @@ var funnelD3Item = (function(_base) {
                 $element.append($('<div/>').attr('id', funnelId));
                 this.funnelViewer = new D3Funnel('#' + funnelId);
             }
-            this._update(data);
+            this._update(data, this._getFunnelSizeOptions());
         } else {
             $element.empty();
             this.funnelViewer = null;
@@ -35,7 +35,7 @@ var funnelD3Item = (function(_base) {
     };
     funnelD3Item.prototype.setSize = function (width, height) {
         _base.prototype.setSize.call(this, width, height);
-        this._update(null, { chart: { width: this.contentWidth(), height: this.contentHeight() } });
+        this._update(null, this._getFunnelSizeOptions());
     };
     funnelD3Item.prototype.clearSelection = function() {
         _base.prototype.clearSelection.call(this);
@@ -48,6 +48,9 @@ var funnelD3Item = (function(_base) {
         return {
             image: this._getImageBase64()
         };
+    };
+    funnelD3Item.prototype._getFunnelSizeOptions = function () {
+        return { chart: { width: this.contentWidth(), height: this.contentHeight() } };
     };
     funnelD3Item.prototype._getDataSource = function() {
         var _this = this;
@@ -67,6 +70,10 @@ var funnelD3Item = (function(_base) {
             }
         });
         return data.length > 0 ? data : undefined;
+    };
+    funnelD3Item.prototype.clearSelection = function () {
+        _base.prototype.clearSelection.call(this);
+        this._update(this._getDataSource());
     };
     funnelD3Item.prototype._ensureFunnelLibrary = function($element) {
         if(!window['D3Funnel']) {
@@ -93,8 +100,6 @@ var funnelD3Item = (function(_base) {
                 data: undefined,
                 options: {
                     chart: {
-                        width: this.contentWidth(),
-                        height: this.contentHeight(),
                         bottomPinch: this.getPropertyValue('PinchCount'),
                         curve: { enabled: this.getPropertyValue('IsCurved') }
                     },
