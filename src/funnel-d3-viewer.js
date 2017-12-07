@@ -71,10 +71,6 @@ var funnelD3Item = (function(_base) {
         });
         return data.length > 0 ? data : undefined;
     };
-    funnelD3Item.prototype.clearSelection = function () {
-        _base.prototype.clearSelection.call(this);
-        this._update(this._getDataSource());
-    };
     funnelD3Item.prototype._ensureFunnelLibrary = function($element) {
         if(!window['D3Funnel']) {
             $element.empty();
