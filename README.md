@@ -7,6 +7,9 @@ This dashboard item supports the following capabilities:
 - [Exporting](https://documentation.devexpress.com/#Dashboard/CustomDocument116694)
 - Appearance Customization
 
+> Note that the custom export functionality implemented in the Funnel D3 item is not supported for the Internet Explorer browser due to the problem with HTML canvas drawing. If you use IE 11 or earlier versions, the export buttons will be hidden. Refer to the following Microsoft issue to learn more: https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/1015651/.
+
+
 ## Installation
 
 To add a custom Funnel3D item extension to the Web Dashboard, follow the steps below.
