@@ -42,9 +42,11 @@ var funnelD3Item = (function(_base) {
         this._update(this._getDataSource());
     };
     funnelD3Item.prototype.allowExportSingleItem = function() {
-        return true;
+        return !this._isIEBrowser();
     };
     funnelD3Item.prototype.getExportInfo = function () {
+        if (this._isIEBrowser())
+            return;
         return {
             image: this._getImageBase64()
         };
@@ -172,6 +174,9 @@ var funnelD3Item = (function(_base) {
         canvas['height'] = this.contentHeight();
         canvas['getContext']('2d').drawImage(this.exportingImage, 0, 0);
         return canvas['toDataURL']().replace('data:image/png;base64,', '');
+    };
+    funnelD3Item.prototype._isIEBrowser = function () {
+        return navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0;
     };
     return funnelD3Item;
 } (DevExpress.Dashboard.customViewerItem));
