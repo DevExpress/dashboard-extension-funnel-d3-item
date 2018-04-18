@@ -110,8 +110,15 @@ var funnelD3Item = (function(_base) {
             return;
         if(!!data) {
             if(!changeExisting || !this.funnelViewer) {
+                this.$funnelContainer && this.$funnelContainer.remove();
                 $element.empty();
-                $element.append($('<div/>').attr('id', funnelId));
+
+                this.$funnelContainer = $('<div/>', { 
+                    attr: {'id': funnelId},
+                    style: 'margin:20px;height:calc(100% - 40px);'
+                });
+
+                $element.append(this.$funnelContainer );
                 this.funnelViewer = new D3Funnel('#' + funnelId);
             }
             this._update(data, this._getFunnelSizeOptions());
@@ -139,7 +146,8 @@ var funnelD3Item = (function(_base) {
         };
     };
     funnelD3Item.prototype._getFunnelSizeOptions = function () {
-        return { chart: { width: this.contentWidth(), height: this.contentHeight() } };
+
+        return { chart: { width: this.$funnelContainer.innerWidth(),  height:this.$funnelContainer.innerHeight() } };
     };
     funnelD3Item.prototype._getDataSource = function() {
         var _this = this;
@@ -162,7 +170,9 @@ var funnelD3Item = (function(_base) {
     };
     funnelD3Item.prototype._ensureFunnelLibrary = function($element) {
         if(!window['D3Funnel']) {
+            
             $element.empty();
+
             $element.append($('<div/>', {
                 css: {
                     position: 'absolute',
@@ -257,8 +267,8 @@ var funnelD3Item = (function(_base) {
     };
     funnelD3Item.prototype._getImageBase64 = function () {
         var canvas = $('<canvas>')[0];
-        canvas['width'] = this.contentWidth();
-        canvas['height'] = this.contentHeight();
+        canvas['width'] = this.$funnelContainer.innerWidth();
+        canvas['height'] = this.$funnelContainer.innerHeight();
         canvas['getContext']('2d').drawImage(this.exportingImage, 0, 0);
         return canvas['toDataURL']().replace('data:image/png;base64,', '');
     };
