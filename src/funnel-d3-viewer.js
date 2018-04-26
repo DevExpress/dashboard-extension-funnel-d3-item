@@ -18,7 +18,6 @@ var funnelD3Item = (function(_base) {
 
     funnelD3Item.prototype.renderContent = function($element, changeExisting) {
         var data = this._getDataSource();
-        var funnelId = this._getFunnelId();
         if(!this._ensureFunnelLibrary($element))
             return;
         if(!!data) {
@@ -27,12 +26,11 @@ var funnelD3Item = (function(_base) {
                 $element.empty();
 
                 this.$funnelContainer = $('<div/>', { 
-                    attr: {'id': funnelId},
                     style: 'margin:20px;height:calc(100% - 40px);'
                 });
 
-                $element.append(this.$funnelContainer );
-                this.funnelViewer = new D3Funnel('#' + funnelId);
+                $element.append(this.$funnelContainer);
+                this.funnelViewer = new D3Funnel(this.$funnelContainer[0]);
             }
             this._update(data, this._getFunnelSizeOptions());
         } else {
@@ -135,9 +133,6 @@ var funnelD3Item = (function(_base) {
         this.funnelSettings.options.block.highlight = this.canDrillDown() || this.canMasterFilter();
         return this.funnelSettings;
     };
-    funnelD3Item.prototype._getFunnelId = function() {
-        return 'dx-d3-funnel-' + this.getName();
-    };
     funnelD3Item.prototype._onClick = function(e) {
         if(!this._hasArguments() || !e.label)
             return;
@@ -170,7 +165,7 @@ var funnelD3Item = (function(_base) {
         }
     };
     funnelD3Item.prototype._updateExportingImage = function () {
-        var svg = $('#' + this._getFunnelId()).children()[0],
+        var svg = this.$funnelContainer.children()[0],
             str = new XMLSerializer().serializeToString(svg),
             encodedData = 'data:image/svg+xml;base64,' + window.btoa(unescape(encodeURIComponent(str)));
         this.exportingImage.src = encodedData;
